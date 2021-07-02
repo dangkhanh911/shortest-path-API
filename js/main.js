@@ -235,11 +235,11 @@ var dragManager = d3.behavior.drag()
 
 
 $('#setexample').on('change', function () {
-    var value = $(this).val();
+var value = $(this).val();
     if (value == 1) {
         clearGraph();
       
-        maps.setView(new L.LatLng(41.005901, 28.975421), 18);
+        maps.setView(new L.LatLng(11.311034, 106.106152), 15);
 
         $.getJSON("mapdata/nodesandpaths1.json", function (datad) {
             var importedData = datad;
@@ -267,49 +267,7 @@ $('#setexample').on('change', function () {
             redrawLines();
             redrawNodes();
         });
-
-
-
-
-
-
     }
-    else if (value == 2) {
-        clearGraph();
- 
-        maps.setView(new L.LatLng(40.737, -73.923), 18);
-
-        $.getJSON("mapdata/nodesandpaths2.json", function (datad) {
-            var importedData = datad;
-
-            if (importedData.nodes === undefined
-                || importedData.paths === undefined
-                || Object.keys(importedData).length !== 2) {
-                console.log("** JSON format error:");
-                console.log(importedData);
-                return;
-            }
-
-            mapdata.allnodes = importedData.nodes;
-            mapdata.paths = importedData.paths;
-            mapdata.distances = [];
-            mapdata.getstate.selectedNode = null;
-            mapdata.getstate.fromNode = null;
-            mapdata.getstate.toNode = null;
-
-            mapdata.allnodes.forEach(function (node) {
-                addNodeToSelect(node.name);
-            });
-
-            calculateDistancesbetweennodes();
-            redrawLines();
-            redrawNodes();
-        });
-    }
-   
-
-
-
 });
 
 
