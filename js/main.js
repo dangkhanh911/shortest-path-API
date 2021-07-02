@@ -15,7 +15,7 @@ var mapdata = {
     }
 };
 
-maps = L.map('svg-map').setView([41.070034, 28.806152], 10);
+maps = L.map('svg-map').setView([11.370034, 106.206152],10);
 mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18,
@@ -225,33 +225,6 @@ $('#exampleModal').on('show.bs.modal', function (event) {
     modal.find('.modal-title').text('New message to ' + recipient)
     modal.find('.modal-body input').val("")
 
-});
-
-$("#submit").click(function () {
-    var email = $("#sender-email").val();
-    var messeage = $("#message-text").val();
-    var dataString = 'Name=' + " " + '&Mail=' + email + '&Comment=' + messeage;
-    if (email == '' || messeage == '') {
-        alert("Please Fill All Fields");
-    }
-    else {
-        $.ajax({
-            type: 'POST',
-            url: 'http://www.senniksoft.com/senniksoft-email/mail.php',
-            data: dataString,
-            success: function (responseData, textStatus, jqXHR) {
-                alert(responseData);
-            },
-            error: function (responseData, textStatus, errorThrown) {
-                alert('POST failed. Please Email Me :)');
-            }
-        });
-
-
-
-
-
-    }
 });
 
 
